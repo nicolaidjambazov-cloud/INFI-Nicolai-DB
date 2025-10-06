@@ -1,24 +1,19 @@
-import { DB } from "sqlite_kraken/";
+import { DatabaseSync } from "node:sqlite";
 
 
-const db = new DB("2ahwii.db");
+const db = new DatabaseSync("2ahwii.db");
 
-// Tabelle anlegen (falls nicht vorhanden)
-db.query(`
-  create table if not exists students (
-    id integer primary key autoincrement,
-    name text,
-    birthdate text
-  )
-`);
+let stmt = db.prepare("SELECT * FROM students");
 
-db.query("insert into students (name, birthdate) values (?, ?)", [
-  "Neuer Name",
-  "2010-01-01",
-]);
+const rows = stmt.all();
 
-const rows = [...db.query("select * from students")];
+stmt = db.prepare("INSERT INTO students (id, name, birthdate) VALUES (?, ?, ?)");
+stmt.run(25,"Lara", '2005-10-23');
+stmt.run(21,"Norbert", '2013-12-152');
+
+
+stmt = db.prepare("SELECT * FROM students");
+const rows2 = stmt.all();
 console.log(rows);
 
-db.close();
 
