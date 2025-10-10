@@ -1,0 +1,9 @@
+Wieviel customer aus Berlin? -> select count(*) from customers where city='Berlin';
+
+Nur CustomerName, City und country anzeigen ->  select CustomerName, City, country from customers;
+
+Alle customer die aus London sind -> select CustomerName from customers where city='London';
+
+Alle Produkte deren Preis größer als 20 ist -> select ProductName from products where Price>20;
+
+Alle Produkte deren Preis ungleich 18 ist -> select ProductName from Products where Price != 18;
