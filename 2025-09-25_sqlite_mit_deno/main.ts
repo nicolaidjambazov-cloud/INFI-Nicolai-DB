@@ -13,7 +13,6 @@ stmt.run(21,"Norbert", '2013-12-152');
 
 
 stmt = db.prepare("SELECT * FROM students");
-const rows2 = stmt.all();
 console.log(rows);
 
 
