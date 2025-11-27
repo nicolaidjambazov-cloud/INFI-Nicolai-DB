@@ -1,0 +1,1 @@
+select a.essen, b.name from essen a join person b on a.id = b.lieblingsessen;
